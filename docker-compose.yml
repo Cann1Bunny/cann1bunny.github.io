@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:stable
+    container_name: csi.pp.ua
+    volumes:
+      - ./html:/usr/share/nginx/html
+    expose:
+      - "80"
+    environment:
+      VIRTUAL_HOST: csi.pp.ua
+      LETSENCRYPT_HOST: csi.pp.ua
+      #LETSENCRYPT_EMAIL: 
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
